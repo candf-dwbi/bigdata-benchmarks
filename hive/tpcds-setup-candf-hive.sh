@@ -13,10 +13,6 @@ function runcommand {
 	fi
 }
 
-if [ ! -f tpcds-gen/target/tpcds-gen-1.0-SNAPSHOT.jar ]; then
-	echo "Please build the data generator with ./tpcds-build.sh first"
-	exit 1
-fi
 which hive > /dev/null 2>&1
 if [ $? -ne 0 ]; then
 	echo "Script must be run where Hive is installed"
