@@ -7,37 +7,28 @@ Based on Hortonworks Hive-testbench with instruction in README.md.hive-testbench
 Quick start
 ==============
 ```
+
 sudo yum -y install unzip gcc make flex bison byacc git
-
-git clone https://github.com/pfizer/AES-ENV.git
-
-cd AES-ENV/
-
-cd hive-testbench/
-
-sudo -u hdfs hdfs dfs -mkdir /user/$USER
-sudo -u hdfs hdfs dfs -chown $USER /user/$USER
-sudo -u hdfs hdfs dfs -chmod 777 /user/$USER
-
-sudo -u hdfs hdfs dfs -mkdir /benchmarks
-sudo -u hdfs hdfs dfs -chmod 777 /benchmarks
-
+git clone https://github.com/candf-dwbi/bigdata-benchmarks
+cd ./bigdata-benchmarks/generator
+chmod 750 ./tpcds-build.sh
 ./tpcds-build.sh
 
 # This will generate data:
 # scale 10  - 10 GB fill dataset 
 # scale 100 - 100 GB full dataset
-./tpcds-setup-candf-gen.sh 100 /benchmarks/tpcds
+chmod 750 ./tpcds-setup-candf-gen.sh
+./tpcds-setup-candf-gen.sh 10 /benchmarks/tpcds 
 
 
 # This will create HIVE tables
-./tpcds-setup-candf-hive.sh 100
+cd ../hive
+chmod 750 ./tpcds-setup-candf-hive.sh 10
+./tpcds-setup-candf-hive.sh 10
 
 # This will create PARQUET tables
-sudo -u hdfs ./tpcds-setup-format.sh 10
-
-# This will run test hive queries from ww forlder
-sudo -u hdfs ./runSuite.pl ww 10 text
+chmod 750 ./tpcds-setup-format.sh 10
+./tpcds-setup-format.sh 10
 
 
 
