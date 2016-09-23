@@ -23,11 +23,11 @@ chmod 750 ./tpcds-setup-candf-gen.sh
 
 # This will create HIVE tables
 cd ../hive
-chmod 750 ./tpcds-setup-candf-hive.sh 10
+chmod 750 ./tpcds-setup-candf-hive.sh
 ./tpcds-setup-candf-hive.sh 10
 
 # This will create PARQUET tables
-chmod 750 ./tpcds-setup-format.sh 10
+chmod 750 ./tpcds-setup-format.sh
 ./tpcds-setup-format.sh 10
 
 
