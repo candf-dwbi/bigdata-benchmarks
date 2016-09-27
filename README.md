@@ -19,16 +19,19 @@ chmod 750 ./tpcds-build.sh
 # scale 100 - 100 GB full dataset
 chmod 750 ./tpcds-setup-candf-gen.sh
 ./tpcds-setup-candf-gen.sh 10 /benchmarks/tpcds 
+./tpcds-setup-candf-gen.sh 100 /benchmarks/tpcds 
 
 
 # This will create HIVE tables
 cd ../hive
 chmod 750 ./tpcds-setup-candf-hive.sh
 ./tpcds-setup-candf-hive.sh 10
+./tpcds-setup-candf-hive.sh 100
 
 # This will create PARQUET tables
 chmod 750 ./tpcds-setup-format.sh
 ./tpcds-setup-format.sh 10
+./tpcds-setup-format.sh 100
 
 
 
